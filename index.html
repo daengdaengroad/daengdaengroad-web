@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>댕댕로드 🐾</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 { text-align: center; }
+    button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🐾 댕댕로드</h1>
+
+<button onclick="getLocation()">📍 내 위치 가져오기</button>
+
+<select id="activity">
+  <option value="산책">산책</option>
+  <option value="애견카페">애견카페</option>
+</select>
+
+<button onclick="generate()">코스 생성</button>
+
+<div id="result"></div>
+
+<script>
+let lat = null;
+let lng = null;
+
+function getLocation() {
+  navigator.geolocation.getCurrentPosition((pos) => {
+    lat = pos.coords.latitude;
+    lng = pos.coords.longitude;
+    alert("위치 가져옴!");
+  });
+}
+
+async function generate() {
+  if (!lat) return alert("위치 먼저 가져와라");
+
+  const activity = document.getElementById("activity").value;
+
+  const res = await fetch("https://daengdaengroad-production.up.railway.app/api/generate-course", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      lat,
+      lng,
+      activity,
+      duration: "30분",
+      dogName: "콩이",
+      dogBreed: "말티즈",
+      dogSize: "small"
+    })
+  });
+
+  const data = await res.json();
+
+  const resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = "";
+
+  data.courses.forEach(c => {
+    resultDiv.innerHTML += `
+      <div class="card">
+        <h3>${c.name}</h3>
+        <p>${c.description}</p>
+      </div>
+    `;
+  });
+}
+</script>
+
+</body>
+</html>
