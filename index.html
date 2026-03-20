@@ -11,87 +11,113 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="댕댕로드">
 <link rel="apple-touch-icon" href="/icon-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Gowun+Dodum&family=Do+Hyeon&display=swap" rel="stylesheet">
 <style>
-:root{--amber:#BA7517;--amber-lt:#FAEEDA;--amber-mid:#EF9F27;--brown:#412402;--brown-md:#633806;--brown-lt:#854F0B;--cream:#F1EFE8;--white:#FFFFFF;--gray:#888780;--gray-lt:#D3D1C7;--dark:#2C2C2A;--teal:#1D9E75;--teal-lt:#E1F5EE;--radius:12px;--radius-sm:8px}
+:root{
+  --amber:#BA7517;--amber-lt:#FAF0E0;--amber-mid:#EF9F27;
+  --brown:#3A1F02;--brown-md:#5C3206;--brown-lt:#7A4509;
+  --cream:#F5F0E8;--white:#FFFDF8;--gray:#8A8880;--gray-lt:#DDD9CF;
+  --dark:#1E1C1A;--teal:#1A9470;--teal-lt:#E0F5EE;
+  --radius:16px;--radius-sm:10px;--radius-xs:8px;
+  --shadow-sm:0 2px 8px rgba(58,31,2,.08);
+  --shadow-md:0 4px 20px rgba(58,31,2,.12);
+  --shadow-lg:0 8px 32px rgba(58,31,2,.16);
+}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:'Noto Sans KR',sans-serif;background:#e8e0d8;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
-.phone{width:390px;height:844px;background:var(--amber-lt);border-radius:40px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(65,36,2,.3),0 0 0 1px rgba(65,36,2,.1)}
-.screen{width:100%;height:calc(100% - 0px);overflow-y:auto;overflow-x:hidden;scrollbar-width:none;padding-bottom:60px}
+body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(145deg,#E8DDD0,#D4C8BB);display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+.phone{width:390px;height:844px;background:var(--amber-lt);border-radius:44px;overflow:hidden;position:relative;box-shadow:0 40px 100px rgba(58,31,2,.35),0 0 0 1px rgba(58,31,2,.08),inset 0 1px 0 rgba(255,255,255,.6)}
+.screen{width:100%;height:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;padding-bottom:72px}
 .screen::-webkit-scrollbar{display:none}
-.status-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 24px 8px;position:sticky;top:0;z-index:100;background:var(--amber-lt)}
 .status-time{font-size:15px;font-weight:700;color:var(--brown)}
 .status-icons{display:flex;gap:6px;align-items:center}
 .status-icons span{font-size:12px;color:var(--brown-md)}
-.page{display:none;animation:fadeIn .3s ease}
+.page{display:none;animation:fadeIn .35s cubic-bezier(.4,0,.2,1)}
 .page.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(29,158,117,.4)}50%{box-shadow:0 0 0 5px rgba(29,158,117,0)}}
-@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-@keyframes bounce{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-8px);opacity:1}}
-.form-group{margin-bottom:14px}
-.form-label{font-size:12px;font-weight:700;color:var(--brown-md);margin-bottom:6px;display:block}
-.form-input{width:100%;padding:13px 16px;background:var(--white);border:1.5px solid var(--gray-lt);border-radius:var(--radius-sm);font-size:15px;color:var(--dark);font-family:'Noto Sans KR',sans-serif;outline:none;transition:border-color .2s}
-.form-input:focus{border-color:var(--amber)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(26,148,112,.35)}50%{box-shadow:0 0 0 6px rgba(26,148,112,0)}}
+@keyframes slideUp{from{transform:translateY(100%);opacity:.8}to{transform:translateY(0);opacity:1}}
+@keyframes bounce{0%,100%{transform:translateY(0);opacity:.35}50%{transform:translateY(-9px);opacity:1}}
+/* 폼 */
+.form-group{margin-bottom:16px}
+.form-label{font-size:11px;font-weight:700;color:var(--brown-md);margin-bottom:7px;display:block;letter-spacing:.5px;text-transform:uppercase}
+.form-input{width:100%;padding:14px 16px;background:var(--white);border:1.5px solid var(--gray-lt);border-radius:var(--radius-sm);font-size:15px;color:var(--dark);font-family:'Noto Sans KR',sans-serif;outline:none;transition:all .2s;box-shadow:var(--shadow-sm)}
+.form-input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(186,117,23,.12)}
 .form-input::placeholder{color:var(--gray-lt)}
+/* 사이즈 버튼 */
 .size-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.size-btn{padding:12px 8px;background:var(--white);border:1.5px solid var(--gray-lt);border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--gray);font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .2s;text-align:center}
-.size-btn.selected{background:var(--amber);border-color:var(--brown-md);color:#fff;font-weight:700;box-shadow:0 2px 8px rgba(186,117,23,.35)}
-.size-btn span{display:block;font-size:20px;margin-bottom:4px}
-.btn-primary{width:100%;padding:16px;background:var(--amber);border:none;border-radius:var(--radius);font-size:16px;font-weight:700;color:var(--white);font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .2s;margin-top:8px}
-.btn-primary:active{transform:scale(.98);background:var(--brown-lt)}
-.btn-secondary{width:100%;padding:14px;background:transparent;border:1.5px solid var(--gray-lt);border-radius:var(--radius);font-size:15px;font-weight:600;color:var(--gray);font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .2s;margin-top:8px}
-.photo-upload-area{display:flex;flex-direction:column;align-items:center;padding:14px 0 20px}
-.photo-circle{width:96px;height:96px;border-radius:50%;background:var(--amber-lt);border:2.5px dashed var(--amber);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;overflow:hidden;position:relative}
-.photo-icon{font-size:32px;position:absolute}
-.photo-label{font-size:12px;color:var(--brown-lt);margin-top:8px;font-weight:500}
-.photo-label-sub{font-size:11px;color:var(--gray-lt);margin-top:2px}
+.size-btn{padding:14px 8px;background:var(--white);border:1.5px solid var(--gray-lt);border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--gray);font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .25s;text-align:center;box-shadow:var(--shadow-sm)}
+.size-btn:hover{border-color:var(--amber-mid);transform:translateY(-1px)}
+.size-btn.selected{background:var(--amber);border-color:transparent;color:#fff;font-weight:700;box-shadow:0 4px 14px rgba(186,117,23,.4);transform:translateY(-1px)}
+.size-btn span{display:block;font-size:22px;margin-bottom:5px}
+/* 버튼 */
+.btn-primary{width:100%;padding:13px;background:linear-gradient(135deg,var(--amber),#CF8B1A);border:none;border-radius:var(--radius);font-size:16px;font-weight:700;color:var(--white);font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .25s;margin-top:8px;box-shadow:0 4px 16px rgba(186,117,23,.4);letter-spacing:-.2px}
+.btn-primary:active{transform:scale(.97);box-shadow:0 2px 8px rgba(186,117,23,.3)}
+.btn-secondary{width:100%;padding:15px;background:transparent;border:1.5px solid var(--gray-lt);border-radius:var(--radius);font-size:15px;font-weight:600;color:var(--gray);font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .2s;margin-top:8px}
+.btn-secondary:hover{border-color:var(--gray);color:var(--dark)}
+/* 사진 */
+.photo-upload-area{display:flex;flex-direction:column;align-items:center;padding:16px 0 24px}
+.photo-circle{width:100px;height:100px;border-radius:50%;background:var(--amber-lt);border:2px dashed var(--amber-mid);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;overflow:hidden;position:relative;box-shadow:var(--shadow-sm)}
+.photo-circle:hover{transform:scale(1.04);border-style:solid}
+.photo-icon{font-size:34px;position:absolute}
+.photo-label{font-size:13px;color:var(--brown-lt);margin-top:10px;font-weight:600}
+.photo-label-sub{font-size:11px;color:var(--gray);margin-top:3px}
 .form-section{padding:0 20px}
+/* 헤더 */
 .main-header{position:relative;overflow:hidden;background:var(--amber-lt)}
-.main-greeting{padding:12px 20px 4px;font-size:13px;color:var(--brown-lt)}
-.hero-banner{width:100%;height:200px;position:relative;overflow:hidden;background:var(--amber-lt);cursor:pointer}
-.hero-bg{width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:var(--brown)}
-.hero-bg-empty{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--amber-lt),#f5ddb8);font-size:80px}
-.hero-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(65,36,2,.55));padding:14px 20px}
+.main-greeting{padding:16px 20px 6px;font-size:13px;color:var(--brown-lt);font-weight:500}
+.hero-banner{width:100%;height:180px;position:relative;overflow:hidden;background:var(--amber-lt);cursor:pointer}
+.hero-bg{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hero-bg-empty{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#F5E4C4,#EDD49A);font-size:88px}
+.hero-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent 20%,rgba(35,18,2,.65));padding:18px 20px 16px}
 .hero-name-row{display:flex;align-items:flex-end;justify-content:space-between}
-.hero-name{font-size:22px;font-weight:900;color:#fff;font-family:'Gowun Dodum',sans-serif;text-shadow:0 1px 6px rgba(0,0,0,.3)}
-.hero-breed{font-size:12px;color:rgba(255,255,255,.85);margin-top:2px}
-.hero-edit-btn{background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.5);border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;color:#fff;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap}
-.hero-no-photo-hint{position:absolute;top:12px;right:12px;background:rgba(186,117,23,.85);border-radius:20px;padding:5px 12px;font-size:11px;font-weight:600;color:#fff;cursor:pointer;font-family:'Noto Sans KR',sans-serif}
-.section-pad{padding:16px 20px}
-.section-title{font-size:12px;font-weight:700;color:var(--brown-md);margin-bottom:10px;letter-spacing:.3px}
-.location-box{background:var(--white);border:1.5px solid var(--gray-lt);border-radius:var(--radius-sm);overflow:hidden;transition:border-color .2s}
-.location-box.active{border-color:var(--amber)}
-.location-auto{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--cream)}
-.location-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);flex-shrink:0;animation:pulse 1.5s ease-in-out infinite}
+.hero-name{font-size:20px;font-weight:400;color:#fff;font-family:'Do Hyeon',sans-serif;text-shadow:0 2px 8px rgba(0,0,0,.3);letter-spacing:.5px}
+.hero-breed{font-size:12px;color:rgba(255,255,255,.8);margin-top:3px;font-weight:500}
+.hero-edit-btn{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);border-radius:24px;padding:6px 14px;font-size:11px;font-weight:600;color:#fff;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap;backdrop-filter:blur(8px);transition:all .2s}
+.hero-edit-btn:hover{background:rgba(255,255,255,.28)}
+.hero-no-photo-hint{position:absolute;top:14px;right:14px;background:rgba(186,117,23,.9);border-radius:20px;padding:6px 14px;font-size:11px;font-weight:700;color:#fff;cursor:pointer;font-family:'Noto Sans KR',sans-serif;backdrop-filter:blur(4px)}
+/* 섹션 */
+.section-pad{padding:12px 20px}
+.section-title{font-size:11px;font-weight:700;color:var(--brown-md);margin-bottom:12px;letter-spacing:.8px;text-transform:uppercase;opacity:.7}
+/* 위치 박스 */
+.location-box{background:var(--white);border:1.5px solid var(--gray-lt);border-radius:var(--radius);overflow:hidden;transition:all .2s;box-shadow:var(--shadow-sm)}
+.location-box.active{border-color:var(--amber);box-shadow:0 0 0 3px rgba(186,117,23,.1)}
+.location-auto{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--cream)}
+.location-dot{width:9px;height:9px;border-radius:50%;background:var(--teal);flex-shrink:0;animation:pulse 2s ease-in-out infinite}
 .location-auto-text{flex:1}
-.location-auto-text p{font-size:14px;font-weight:600;color:var(--dark)}
-.location-auto-text span{font-size:11px;color:var(--gray)}
-.location-refresh{font-size:16px;cursor:pointer;color:var(--amber);background:var(--amber-lt);border:none;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.location-manual{display:flex;align-items:center;gap:8px;padding:10px 16px}
+.location-auto-text p{font-size:15px;font-weight:700;color:var(--dark)}
+.location-auto-text span{font-size:11px;color:var(--gray);margin-top:1px;display:block}
+.location-refresh{font-size:15px;cursor:pointer;color:var(--amber);background:var(--amber-lt);border:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.location-refresh:hover{transform:rotate(45deg)}
+.location-manual{display:flex;align-items:center;gap:8px;padding:7px 14px}
 .location-manual input{border:none;outline:none;font-size:13px;color:var(--gray);width:100%;background:transparent;font-family:'Noto Sans KR',sans-serif}
 .location-manual-label{font-size:11px;color:var(--gray-lt);flex-shrink:0}
-.mood-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.mood-btn{padding:14px 12px;background:var(--white);border:1.5px solid var(--gray-lt);border-radius:var(--radius);cursor:pointer;transition:all .2s;text-align:center}
-.mood-btn.selected{background:var(--amber);border-color:var(--brown-md);box-shadow:0 2px 8px rgba(186,117,23,.35)}
-.mood-btn .mood-emoji{font-size:24px;margin-bottom:4px}
-.mood-btn .mood-label{font-size:12px;font-weight:700;color:var(--brown-md)}
+/* 무드 버튼 */
+.mood-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mood-btn{padding:12px 10px;background:var(--white);border:1.5px solid var(--gray-lt);border-radius:var(--radius);cursor:pointer;transition:all .25s;text-align:center;box-shadow:var(--shadow-sm)}
+.mood-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.mood-btn.selected{background:linear-gradient(135deg,var(--amber),#CF8B1A);border-color:transparent;box-shadow:0 6px 20px rgba(186,117,23,.4);transform:translateY(-2px)}
+.mood-btn .mood-emoji{font-size:28px;margin-bottom:6px}
+.mood-btn .mood-label{font-size:13px;font-weight:700;color:var(--brown-md);line-height:1.3}
 .mood-btn.selected .mood-label{color:#fff}
-.mood-btn.selected .mood-desc{color:rgba(255,255,255,.8)}
-.mood-btn .mood-desc{font-size:10px;color:var(--gray);margin-top:2px}
-.mood-btn:not(.selected) .mood-label{color:var(--gray)}
-.duration-row{display:flex;gap:8px}
-.duration-btn{flex:1;padding:12px 6px;background:var(--white);border:1.5px solid var(--gray-lt);border-radius:var(--radius-sm);font-size:12px;font-weight:600;color:var(--gray);font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .2s;text-align:center;line-height:1.4}
-.duration-btn.selected{background:var(--amber);border-color:var(--brown-md);color:#fff;box-shadow:0 2px 8px rgba(186,117,23,.35)}
-.result-header{padding:16px 24px 12px;background:var(--amber-lt)}
-.back-btn{font-size:13px;color:var(--amber);cursor:pointer;display:flex;align-items:center;gap:4px;margin-bottom:8px;background:none;border:none;font-family:'Noto Sans KR',sans-serif;font-weight:600}
-.result-header h2{font-size:20px;font-weight:900;color:var(--brown)}
+.mood-btn.selected .mood-desc{color:rgba(255,255,255,.75)}
+.mood-btn .mood-desc{font-size:10px;color:var(--gray);margin-top:3px}
+.mood-btn:not(.selected) .mood-label{color:var(--brown-md)}
+/* 거리 버튼 */
+.duration-row{display:flex;gap:10px}
+.duration-btn{flex:1;padding:14px 6px;background:var(--white);border:1.5px solid var(--gray-lt);border-radius:var(--radius-sm);font-size:13px;font-weight:600;color:var(--gray);font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .25s;text-align:center;line-height:1.5;box-shadow:var(--shadow-sm)}
+.duration-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.duration-btn.selected{background:linear-gradient(135deg,var(--amber),#CF8B1A);border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(186,117,23,.4);transform:translateY(-1px)}
+/* 결과 헤더 */
+.result-header{padding:20px 24px 14px;background:var(--amber-lt)}
+.back-btn{font-size:13px;color:var(--amber);cursor:pointer;display:flex;align-items:center;gap:5px;margin-bottom:10px;background:none;border:none;font-family:'Noto Sans KR',sans-serif;font-weight:700;letter-spacing:-.1px}
+.result-header h2{font-size:22px;font-weight:900;color:var(--brown);letter-spacing:-.5px}
 .result-header p{font-size:12px;color:var(--brown-lt);margin-top:2px}
 .verified-banner{margin:12px 20px;background:var(--teal-lt);border-radius:var(--radius-sm);padding:10px 14px;display:flex;align-items:center;gap:8px;border:1px solid var(--teal)}
 .verified-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0}
 .verified-banner span{font-size:12px;color:var(--teal);font-weight:600}
-.course-card{margin:0 20px 12px;background:var(--white);border-radius:var(--radius);border:1.5px solid var(--gray-lt);overflow:hidden;cursor:pointer;transition:all .2s}
+.course-card{margin:0 16px 14px;background:var(--white);border-radius:20px;border:none;overflow:hidden;cursor:pointer;transition:all .25s;box-shadow:var(--shadow-md)}
+.course-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
 .course-card:active{transform:scale(.98)}
 .course-card-header{padding:14px 16px 10px}
 .course-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;background:var(--amber-lt);color:var(--brown-lt)}
@@ -99,7 +125,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#e8e0d8;display:flex;justi
 .course-title{font-size:17px;font-weight:900;color:var(--brown);margin:8px 0 4px;font-family:'Gowun Dodum',sans-serif}
 .course-area{display:flex;align-items:center;gap:4px;margin-bottom:8px}
 .course-area-badge{background:var(--amber-lt);color:var(--brown-md);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px}
-.course-time-big{font-size:22px;font-weight:900;color:var(--amber);line-height:1}
+.course-time-big{font-size:24px;font-weight:900;color:var(--amber);line-height:1;letter-spacing:-.5px}
 .course-time-label{font-size:10px;color:var(--gray);margin-top:2px}
 .course-meta{display:flex;gap:16px;align-items:flex-end;margin-top:6px}
 .course-meta-item{text-align:center}
@@ -134,13 +160,13 @@ body{font-family:'Noto Sans KR',sans-serif;background:#e8e0d8;display:flex;justi
 .loading-dot{width:10px;height:10px;border-radius:50%;background:var(--amber);animation:bounce .6s ease-in-out infinite}
 .loading-dot:nth-child(2){animation-delay:.1s}
 .loading-dot:nth-child(3){animation-delay:.2s}
-.loading-text{font-size:14px;font-weight:600;color:var(--brown-md);text-align:center;line-height:1.6}
+.loading-text{font-size:15px;font-weight:700;color:var(--brown-md);text-align:center;line-height:1.7;letter-spacing:-.2px}
 .loading-step{font-size:12px;color:var(--brown-lt);text-align:center}
 .modal-backdrop{display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(65,36,2,.5);z-index:300;align-items:flex-end}
 .modal-backdrop.show{display:flex}
-.modal-sheet{width:100%;background:var(--white);border-radius:20px 20px 0 0;padding:0 20px 36px;animation:slideUp .3s ease;max-height:85%;overflow-y:auto}
-.modal-handle{width:40px;height:4px;background:var(--gray-lt);border-radius:2px;margin:12px auto 16px}
-.modal-title{font-size:18px;font-weight:900;color:var(--brown);margin-bottom:2px;font-family:'Gowun Dodum',sans-serif}
+.modal-sheet{width:100%;background:var(--white);border-radius:26px 26px 0 0;padding:0 20px 36px;animation:slideUp .3s cubic-bezier(.4,0,.2,1);max-height:88%;overflow-y:auto;box-shadow:0 -8px 40px rgba(58,31,2,.15)}
+.modal-handle{width:36px;height:4px;background:var(--gray-lt);border-radius:2px;margin:14px auto 18px}
+.modal-title{font-size:20px;font-weight:900;color:var(--brown);margin-bottom:2px;font-family:'Gowun Dodum',sans-serif;letter-spacing:-.3px}
 .modal-subtitle{font-size:12px;color:var(--gray);margin-bottom:20px}
 .modal-btn-row{display:flex;gap:8px}
 .modal-btn-row button{margin-top:0!important;flex:1}
@@ -170,12 +196,13 @@ body{font-family:'Noto Sans KR',sans-serif;background:#e8e0d8;display:flex;justi
 .star-btn{font-size:24px;background:none;border:none;cursor:pointer;opacity:.3;transition:opacity .2s}
 .star-btn.on{opacity:1}
 /* 하단 탭 */
-.bottom-tab{position:absolute;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid var(--gray-lt);display:flex;z-index:50}
-.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:8px 0 14px;cursor:pointer;gap:3px}
-.tab-icon{font-size:20px}
-.tab-label{font-size:10px;color:var(--gray);font-weight:500}
+.bottom-tab{position:absolute;bottom:0;left:0;right:0;background:rgba(255,253,248,.95);border-top:1px solid rgba(221,217,207,.6);display:flex;z-index:50;backdrop-filter:blur(12px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 0 14px;cursor:pointer;gap:3px;transition:transform .2s}
+.tab-item:active{transform:scale(.92)}
+.tab-icon{font-size:22px}
+.tab-label{font-size:10px;color:var(--gray);font-weight:500;letter-spacing:.2px}
 .tab-item.active .tab-label{color:var(--amber);font-weight:700}
-.law-banner{margin:8px 20px;background:linear-gradient(135deg,#1D9E75,#167a5a);border-radius:var(--radius);padding:12px 16px;cursor:pointer;position:relative;overflow:hidden}
+.law-banner{margin:4px 20px;background:linear-gradient(135deg,#1D9E75,#167a5a);border-radius:var(--radius);padding:12px 16px;cursor:pointer;position:relative;overflow:hidden}
 .law-banner::before{content:'';position:absolute;top:-10px;right:-10px;width:80px;height:80px;background:rgba(255,255,255,.08);border-radius:50%}
 .law-banner-title{font-size:13px;font-weight:900;color:#fff;display:flex;align-items:center;gap:6px}
 .law-banner-desc{font-size:11px;color:rgba(255,255,255,.85);margin-top:3px;line-height:1.5}
@@ -186,7 +213,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#e8e0d8;display:flex;justi
 .entry-tag.allowed{background:var(--teal-lt);color:var(--teal)}
 .refresh-btn{background:var(--amber-lt);border:1.5px solid var(--amber);border-radius:20px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--amber);cursor:pointer;font-family:'Noto Sans KR',sans-serif;display:flex;align-items:center;gap:4px;transition:all .2s}
 .refresh-btn:active{background:var(--amber);color:#fff}
-.toast{position:absolute;bottom:110px;left:50%;transform:translateX(-50%);background:var(--brown);color:var(--white);padding:10px 20px;border-radius:50px;font-size:13px;font-weight:600;white-space:nowrap;z-index:400;opacity:0;transition:opacity .3s;pointer-events:none;max-width:300px;text-align:center}
+.toast{position:absolute;bottom:90px;left:50%;transform:translateX(-50%);background:rgba(35,18,2,.9);color:var(--white);padding:11px 22px;border-radius:50px;font-size:13px;font-weight:600;white-space:nowrap;z-index:400;opacity:0;transition:opacity .3s;pointer-events:none;max-width:300px;text-align:center;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,.2)}
 .toast.show{opacity:1}
 </style>
 </head>
@@ -265,10 +292,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#e8e0d8;display:flex;justi
 
 <div class="toast" id="toast"></div>
 
-<div class="status-bar">
-  <span class="status-time">9:41</span>
-  <div class="status-icons"><span>&#x25CF;&#x25CF;&#x25CF;</span><span>WiFi</span><span>&#x1F50B;</span></div>
-</div>
+
 
 <!-- PAGE 1: ONBOARDING -->
 <div class="page active" id="page-onboarding">
@@ -333,7 +357,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#e8e0d8;display:flex;justi
     <div class="law-banner-title">&#x1F389; 3월부터 반려견 동반 식당 합법화!<span class="law-banner-tag">NEW</span></div>
     <div class="law-banner-desc">식품위생법 시행규칙 개정 &middot; 공식 인증 식당을 확인하세요</div>
   </div>
-  <div class="section-pad">
+  <div class="section-pad" style="padding:10px 20px">
     <div class="section-title">출발지</div>
     <div class="location-box" id="locationBox">
       <div class="location-auto">
@@ -352,35 +376,56 @@ body{font-family:'Noto Sans KR',sans-serif;background:#e8e0d8;display:flex;justi
   </div>
 
   <div class="section-pad" style="padding-top:0">
-    <div class="section-title">오늘 뭐 하고 싶어요?</div>
-    <div class="mood-grid">
-      <button class="mood-btn selected" onclick="selectMood(this)">
-        <div class="mood-emoji">&#x2615;</div><div class="mood-label">애견카페부터 갈래요</div>
+    <div class="section-title">장소</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+      <button class="mood-btn selected" onclick="selectMood(this)" style="padding:0;overflow:hidden;border-radius:var(--radius)">
+        <div style="position:relative;width:100%;height:110px">
+          <img src="/public/cafe.jpg" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(58,31,2,.7))"></div>
+          <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#fff;font-size:14px;font-weight:800;text-shadow:0 1px 4px rgba(0,0,0,.5);font-family:'Noto Sans KR',sans-serif">애견카페</div>
+        </div>
       </button>
-      <button class="mood-btn" onclick="selectMood(this)">
-        <div class="mood-emoji">&#x1F374;</div><div class="mood-label">애견식당부터 갈래요</div>
+      <button class="mood-btn" onclick="selectMood(this)" style="padding:0;overflow:hidden;border-radius:var(--radius)">
+        <div style="position:relative;width:100%;height:110px">
+          <img src="/public/food.png" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(58,31,2,.7))"></div>
+          <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#fff;font-size:14px;font-weight:800;text-shadow:0 1px 4px rgba(0,0,0,.5);font-family:'Noto Sans KR',sans-serif">애견식당</div>
+        </div>
+      </button>
+    </div>
+    <div class="section-title" style="margin-top:14px">거리</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+      <button class="duration-btn selected" onclick="selectDuration(this)" data-radius="20000" data-label="30분 거리" style="padding:0;overflow:hidden;border-radius:var(--radius)">
+        <div style="position:relative;width:100%;height:110px">
+          <img src="/public/walk.png" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(58,31,2,.7))"></div>
+          <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)">
+            <div style="font-size:14px;font-weight:800">30분 거리</div>
+            <div style="font-size:10px;opacity:.85;margin-top:2px">~20km</div>
+          </div>
+        </div>
+      </button>
+      <button class="duration-btn" onclick="selectDuration(this)" data-radius="100000" data-label="1시간 거리" style="padding:0;overflow:hidden;border-radius:var(--radius)">
+        <div style="position:relative;width:100%;height:110px">
+          <img src="/public/drive.png" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(58,31,2,.7))"></div>
+          <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)">
+            <div style="font-size:14px;font-weight:800">1시간 거리</div>
+            <div style="font-size:10px;opacity:.85;margin-top:2px">~100km</div>
+          </div>
+        </div>
       </button>
     </div>
   </div>
 
-  <div class="section-pad" style="padding-top:0">
-    <div class="section-title">얼마나 멀리 갈까요?</div>
-    <div class="duration-row">
-      <button class="duration-btn selected" onclick="selectDuration(this)" data-radius="20000" data-label="30분 거리">
-        <div style="font-size:24px;margin-bottom:4px">&#x1F3E0;</div>
-        <div style="font-size:14px;font-weight:700">30분 거리</div>
-        <div style="font-size:11px;opacity:.7;margin-top:3px">동네 근처 ~20km</div>
-      </button>
-      <button class="duration-btn" onclick="selectDuration(this)" data-radius="100000" data-label="1시간 이상">
-        <div style="font-size:24px;margin-bottom:4px">&#x1F30F;</div>
-        <div style="font-size:14px;font-weight:700">1시간 이상</div>
-        <div style="font-size:11px;opacity:.7;margin-top:3px">멀리 떠나기 ~100km</div>
-      </button>
-    </div>
-  </div>
-
-  <div class="section-pad" style="padding-top:0">
-    <button class="btn-primary" onclick="generateCourse()">코스 만들어줘 &#x1F43E;</button>
+  <div class="section-pad" style="padding:8px 20px 16px">
+    <button onclick="generateCourse()" style="width:100%;padding:0;overflow:hidden;border-radius:var(--radius);border:none;cursor:pointer">
+      <div style="position:relative;width:100%;height:58px">
+        <img src="/public/start.png" style="width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:rgba(58,31,2,.45)"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><div style="font-size:17px;font-weight:800;color:#fff;font-family:'Noto Sans KR',sans-serif;text-shadow:0 1px 6px rgba(0,0,0,.8)">코스 만들기 🐾</div></div>
+      </div>
+    </button>
   </div>
   <div style="padding-bottom:8px"></div>
 </div>
@@ -458,15 +503,15 @@ body{font-family:'Noto Sans KR',sans-serif;background:#e8e0d8;display:flex;justi
 <!-- 하단 탭 -->
 <div class="bottom-tab" id="bottomTab" style="display:none">
   <div class="tab-item active" id="tab-home" onclick="switchTab('main')">
-    <div class="tab-icon">&#x1F3E0;</div>
+    <img src="/public/home.png" style="width:28px;height:28px;object-fit:contain;border-radius:6px">
     <div class="tab-label">홈</div>
   </div>
   <div class="tab-item" id="tab-saved" onclick="switchTab('saved')">
-    <div class="tab-icon">&#x2764;&#xFE0F;</div>
+    <img src="/public/heart.png" style="width:28px;height:28px;object-fit:contain;border-radius:6px">
     <div class="tab-label">저장</div>
   </div>
   <div class="tab-item" id="tab-profile" onclick="openEditModal()">
-    <div class="tab-icon">&#x1F436;</div>
+    <img src="/public/mydog.png" style="width:28px;height:28px;object-fit:contain;border-radius:6px">
     <div class="tab-label">내 강아지</div>
   </div>
 </div>
@@ -479,7 +524,7 @@ let dogSize='small', editSize='small';
 let currentRadius=20000, currentDurationLabel='30분 거리';
 let currentLocation='대구 남구', currentLat=35.8562, currentLng=128.5327;
 let currentPhoto=null;
-const SERVER = "https://daengdaengroad-production.up.railway.app";
+const SERVER = window.location.origin.includes('localhost') ? 'http://localhost:3000' : window.location.origin;
 
 window.addEventListener('load',()=>{
   const saved=loadProfile();
