@@ -380,14 +380,14 @@ body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(145deg,#E8
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
       <button class="mood-btn selected" onclick="selectMood(this)" style="padding:0;overflow:hidden;border-radius:var(--radius)">
         <div style="position:relative;width:100%;height:110px">
-          <img src="/public/cafe.jpg" style="width:100%;height:100%;object-fit:cover;display:block">
+          <img src="https://daengdaengroad-production.up.railway.app/public/cafe.jpg" style="width:100%;height:100%;object-fit:cover;display:block">
           <div style="position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(58,31,2,.7))"></div>
           <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#fff;font-size:14px;font-weight:800;text-shadow:0 1px 4px rgba(0,0,0,.5);font-family:'Noto Sans KR',sans-serif">애견카페</div>
         </div>
       </button>
       <button class="mood-btn" onclick="selectMood(this)" style="padding:0;overflow:hidden;border-radius:var(--radius)">
         <div style="position:relative;width:100%;height:110px">
-          <img src="/public/food.png" style="width:100%;height:100%;object-fit:cover;display:block">
+          <img src="https://daengdaengroad-production.up.railway.app/public/food.png" style="width:100%;height:100%;object-fit:cover;display:block">
           <div style="position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(58,31,2,.7))"></div>
           <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#fff;font-size:14px;font-weight:800;text-shadow:0 1px 4px rgba(0,0,0,.5);font-family:'Noto Sans KR',sans-serif">애견식당</div>
         </div>
@@ -397,7 +397,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(145deg,#E8
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
       <button class="duration-btn selected" onclick="selectDuration(this)" data-radius="20000" data-label="30분 거리" style="padding:0;overflow:hidden;border-radius:var(--radius)">
         <div style="position:relative;width:100%;height:110px">
-          <img src="/public/walk.png" style="width:100%;height:100%;object-fit:cover;display:block">
+          <img src="https://daengdaengroad-production.up.railway.app/public/walk.png" style="width:100%;height:100%;object-fit:cover;display:block">
           <div style="position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(58,31,2,.7))"></div>
           <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)">
             <div style="font-size:14px;font-weight:800">30분 거리</div>
@@ -407,7 +407,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(145deg,#E8
       </button>
       <button class="duration-btn" onclick="selectDuration(this)" data-radius="100000" data-label="1시간 거리" style="padding:0;overflow:hidden;border-radius:var(--radius)">
         <div style="position:relative;width:100%;height:110px">
-          <img src="/public/drive.png" style="width:100%;height:100%;object-fit:cover;display:block">
+          <img src="https://daengdaengroad-production.up.railway.app/public/drive.png" style="width:100%;height:100%;object-fit:cover;display:block">
           <div style="position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(58,31,2,.7))"></div>
           <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)">
             <div style="font-size:14px;font-weight:800">1시간 거리</div>
@@ -421,7 +421,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(145deg,#E8
   <div class="section-pad" style="padding:8px 20px 16px">
     <button onclick="generateCourse()" style="width:100%;padding:0;overflow:hidden;border-radius:var(--radius);border:none;cursor:pointer">
       <div style="position:relative;width:100%;height:58px">
-        <img src="/public/start.png" style="width:100%;height:100%;object-fit:cover;display:block">
+        <img src="https://daengdaengroad-production.up.railway.app/public/start.png" style="width:100%;height:100%;object-fit:cover;display:block">
         <div style="position:absolute;inset:0;background:rgba(58,31,2,.45)"></div>
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><div style="font-size:17px;font-weight:800;color:#fff;font-family:'Noto Sans KR',sans-serif;text-shadow:0 1px 6px rgba(0,0,0,.8)">코스 만들기 🐾</div></div>
       </div>
@@ -503,15 +503,15 @@ body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(145deg,#E8
 <!-- 하단 탭 -->
 <div class="bottom-tab" id="bottomTab" style="display:none">
   <div class="tab-item active" id="tab-home" onclick="switchTab('main')">
-    <img src="/public/home.png" style="width:28px;height:28px;object-fit:contain;border-radius:6px">
+    <img src="https://daengdaengroad-production.up.railway.app/public/home.png" style="width:28px;height:28px;object-fit:contain;border-radius:6px">
     <div class="tab-label">홈</div>
   </div>
   <div class="tab-item" id="tab-saved" onclick="switchTab('saved')">
-    <img src="/public/heart.png" style="width:28px;height:28px;object-fit:contain;border-radius:6px">
+    <img src="https://daengdaengroad-production.up.railway.app/public/heart.png" style="width:28px;height:28px;object-fit:contain;border-radius:6px">
     <div class="tab-label">저장</div>
   </div>
   <div class="tab-item" id="tab-profile" onclick="openEditModal()">
-    <img src="/public/mydog.png" style="width:28px;height:28px;object-fit:contain;border-radius:6px">
+    <img src="https://daengdaengroad-production.up.railway.app/public/mydog.png" style="width:28px;height:28px;object-fit:contain;border-radius:6px">
     <div class="tab-label">내 강아지</div>
   </div>
 </div>
@@ -524,7 +524,7 @@ let dogSize='small', editSize='small';
 let currentRadius=20000, currentDurationLabel='30분 거리';
 let currentLocation='대구 남구', currentLat=35.8562, currentLng=128.5327;
 let currentPhoto=null;
-const SERVER = window.location.origin.includes('localhost') ? 'http://localhost:3000' : window.location.origin;
+const SERVER = window.location.origin.includes('localhost') ? 'http://localhost:3000' : 'https://daengdaengroad-production.up.railway.app';
 
 window.addEventListener('load',()=>{
   const saved=loadProfile();
